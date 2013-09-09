@@ -1,0 +1,24 @@
+{
+  "name": "koa-rewrite",
+  "description": "URL rewrite middleware for koa",
+  "repository": "koajs/rewrite",
+  "version": "1.0.0",
+  "keywords": [
+    "koa",
+    "middleware",
+    "rewrite",
+    "redirect",
+    "url"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "devDependencies": {
+    "koa": "0.0.1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "debug": "*",
+    "path-to-regexp": "0.0.2"
+  }
+}
