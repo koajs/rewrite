@@ -14,10 +14,8 @@ app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
 // GET /js/jquery.js
 app.use(rewrite('/js/*', '/public/assets/js/$1'));
 
-app.use(function(next){
-  return function *(){
-    this.body = this.url + '\n';
-  }
+app.use(function*(){
+  this.body = this.url + '\n';
 });
 
 app.listen(3000);
