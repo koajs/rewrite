@@ -33,6 +33,27 @@ app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
 app.use(rewrite('/js/*', '/public/assets/js/$1'));
 ```
 
+  All the examples above could also be provided as a rule map. Using a rule map has the benefit of
+  binding a function to the object, and be able to add rules after the middleware has been called.
+  For example :
+
+```js
+var rules = {
+  // GET /foo..bar
+  '/commits/:src/to/:dst': '/:src..:dst',
+
+  // GET /js/jquery.js
+  '/public/assets/js/$1': '/js/*'
+};
+
+app.use(rewrite(rules));
+
+// add late route....
+rules.addRule(/^\/i(\w+)/, '/items/$1');
+
+```
+
+
 ## Debugging
 
   Use the __DEBUG__ environment variable with "koa-rewrite":
