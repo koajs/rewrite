@@ -3,6 +3,9 @@
   "description": "URL rewrite middleware for koa",
   "repository": "koajs/rewrite",
   "version": "1.1.0",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --harmony test/test"
+  },
   "keywords": [
     "koa",
     "middleware",
@@ -14,7 +17,9 @@
     "index.js"
   ],
   "devDependencies": {
-    "koa": "~0.2.1"
+    "koa": "~0.2.1",
+    "mocha": "^2.2.4",
+    "supertest": "^0.15.0"
   },
   "license": "MIT",
   "dependencies": {
