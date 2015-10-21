@@ -39,9 +39,14 @@ function rewrite(src, dst) {
       });
 
       debug('rewrite %s -> %s', orig, this.path);
+
+      yield* next;
+
+      this.path = orig;
+      return;
     }
 
-    yield next;
+    yield* next;
   }
 }
 
