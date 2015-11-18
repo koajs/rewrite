@@ -1,6 +1,7 @@
 var request = require('supertest');
 var koa = require('koa');
 var rewrite = require('..');
+var assert = require('assert')
 
 describe('koa-rewrite', function () {
   it('rewrite /^\/i(\w+)/ -> /items/$1', function (done) {
@@ -70,4 +71,10 @@ describe('koa-rewrite', function () {
     .get('/js/jquery.js')
     .expect('/public/assets/js/jquery.js', done);
   });
+
+  it('exposes name for debugging purposes', function (done) {
+    var mw = rewrite('/one', 'two')
+    assert.strictEqual(mw.name, 'rewrite')
+    done()
+  })
 });

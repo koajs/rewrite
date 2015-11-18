@@ -28,10 +28,10 @@ function rewrite(src, dst) {
 
   debug('rewrite %s -> %s    %s', src, dst, re);
 
-  return function*(next){
+  return function* rewrite(next){
     var orig = this.path;
     var m = re.exec(orig);
-    
+
     if (m) {
       this.path = dst.replace(/\$(\d+)|(?::(\w+))/g, function(_, n, name){
         if (name) return m[map[name].index + 1];
