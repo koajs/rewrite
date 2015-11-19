@@ -4,7 +4,7 @@
   "repository": "koajs/rewrite",
   "version": "1.1.0",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --harmony test/test"
+    "test": "mocha test/test"
   },
   "keywords": [
     "koa",
@@ -17,7 +17,7 @@
     "index.js"
   ],
   "devDependencies": {
-    "koa": "~0.2.1",
+    "koa": "^2.0.0-alpha.3",
     "mocha": "^2.2.4",
     "supertest": "^0.15.0"
   },
@@ -25,5 +25,8 @@
   "dependencies": {
     "debug": "*",
     "path-to-regexp": "0.0.2"
+  },
+  "engines": {
+    "node": ">= 4"
   }
 }
