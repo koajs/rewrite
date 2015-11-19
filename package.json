@@ -25,5 +25,8 @@
   "dependencies": {
     "debug": "*",
     "path-to-regexp": "0.0.2"
+  },
+  "engines": {
+    "node": ">= 4"
   }
 }
