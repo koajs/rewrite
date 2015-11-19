@@ -1,8 +1,9 @@
+'use strict';
 
-var rewrite = require('./');
-var koa = require('koa');
+const rewrite = require('./');
+const Koa = require('koa');
 
-var app = koa();
+const app = new Koa();
 
 // GET /i124
 app.use(rewrite(/^\/i(\w+)/, '/items/$1'));
@@ -14,9 +15,10 @@ app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
 // GET /js/jquery.js
 app.use(rewrite('/js/*', '/public/assets/js/$1'));
 
-app.use(function*(){
-  this.body = this.url + '\n';
+app.use(function(ctx) {
+  ctx.body = ctx.url + '\n';
 });
 
-app.listen(3000);
-console.log('listening on port 3000');
+app.listen(3000, () => {
+  console.log('listening on port 3000');
+});
