@@ -1,3 +1,5 @@
+'use strict';
+
 const request = require('supertest');
 const Koa = require('koa');
 const rewrite = require('..');
