@@ -29,19 +29,19 @@ function rewrite(src, dst) {
   debug('rewrite %s -> %s    %s', src, dst, re);
 
   return function(ctx, next) {
-    const orig = ctx.path;
+    const orig = ctx.url;
     const m = re.exec(orig);
 
     if (m) {
-      ctx.path = dst.replace(/\$(\d+)|(?::(\w+))/g, function(_, n, name){
+      ctx.url = dst.replace(/\$(\d+)|(?::(\w+))/g, function(_, n, name){
         if (name) return m[map[name].index + 1];
         return m[n];
       });
 
-      debug('rewrite %s -> %s', orig, ctx.path);
+      debug('rewrite %s -> %s', orig, ctx.url);
 
       return next().then(function() {
-        ctx.path = orig;
+        ctx.url = orig;
       });
     }
 
