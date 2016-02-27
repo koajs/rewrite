@@ -33,14 +33,14 @@ function rewrite(src, dst) {
     const m = re.exec(orig);
 
     if (m) {
-      ctx.url = dst.replace(/\$(\d+)|(?::(\w+))/g, function(_, n, name){
+      ctx.url = dst.replace(/\$(\d+)|(?::(\w+))/g, (_, n, name) => {
         if (name) return m[map[name].index + 1];
         return m[n];
       });
 
       debug('rewrite %s -> %s', orig, ctx.url);
 
-      return next().then(function() {
+      return next().then(() => {
         ctx.url = orig;
       });
     }
@@ -60,7 +60,7 @@ function rewrite(src, dst) {
 function toMap(params) {
   const map = {};
 
-  params.forEach(function(param, i){
+  params.forEach((param, i) => {
     param.index = i;
     map[param.name] = param;
   });

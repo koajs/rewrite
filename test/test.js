@@ -11,12 +11,12 @@ function differentPathHelper(ctx, next) {
   });
 }
 
-describe('new Koa-rewrite', function () {
-  it('rewrite /^\/i(\w+)/ -> /items/$1', function (done) {
+describe('new Koa-rewrite', () => {
+  it('rewrite /^\/i(\w+)/ -> /items/$1', done => {
     const app = new Koa();
     app.use(differentPathHelper);
     app.use(rewrite(/^\/i(\w+)/, '/items/$1'));
-    app.use(function(ctx) {
+    app.use((ctx) => {
       ctx.body = ctx.path;
     });
 
@@ -25,11 +25,11 @@ describe('new Koa-rewrite', function () {
     .expect('/items/124', done);
   });
 
-  it('rewrite /:src..:dst -> /commits/$1/to/$2', function (done) {
+  it('rewrite /:src..:dst -> /commits/$1/to/$2', done => {
     const app = new Koa();
     app.use(differentPathHelper);
     app.use(rewrite('/:src..:dst', '/commits/$1/to/$2'));
-    app.use(function(ctx) {
+    app.use((ctx) => {
       ctx.body = ctx.path;
     });
 
@@ -38,11 +38,11 @@ describe('new Koa-rewrite', function () {
     .expect('/commits/foo/to/bar', done);
   });
 
-  it('rewrite /:src..:dst -> /commits/:src/to/:dst', function (done) {
+  it('rewrite /:src..:dst -> /commits/:src/to/:dst', done => {
     const app = new Koa();
     app.use(differentPathHelper);
     app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
-    app.use(function(ctx) {
+    app.use((ctx) => {
       ctx.body = ctx.path;
     });
 
@@ -51,11 +51,11 @@ describe('new Koa-rewrite', function () {
     .expect('/commits/foo/to/bar', done);
   });
 
-  it('rewrite /js/* -> /public/assets/js/$1', function (done) {
+  it('rewrite /js/* -> /public/assets/js/$1', done => {
     const app = new Koa();
     app.use(differentPathHelper);
     app.use(rewrite('/js/*', '/public/assets/js/$1'));
-    app.use(function(ctx) {
+    app.use((ctx) => {
       ctx.body = ctx.path;
     });
 
@@ -64,11 +64,11 @@ describe('new Koa-rewrite', function () {
     .expect('/public/assets/js/jquery.js', done);
   });
 
-  it('rewrite /one/:arg -> /two?arg=:arg', function (done) {
+  it('rewrite /one/:arg -> /two?arg=:arg', done => {
     const app = new Koa();
     app.use(differentPathHelper);
     app.use(rewrite('/one/:arg', '/two?arg=:arg'));
-    app.use(function(ctx) {
+    app.use((ctx) => {
       ctx.body = ctx.url;
     });
 
@@ -77,11 +77,11 @@ describe('new Koa-rewrite', function () {
     .expect('/two?arg=test', done);
   });
 
-  it('rewrite /one/:arg1/two:arg2 -> /one/two?arg1=:arg1&arg2=:arg2', function (done) {
+  it('rewrite /one/:arg1/two:arg2 -> /one/two?arg1=:arg1&arg2=:arg2', done => {
     const app = new Koa();
     app.use(differentPathHelper);
     app.use(rewrite('/one/:arg1/two/:arg2', '/one/two?arg1=:arg1&arg2=:arg2'));
-    app.use(function(ctx) {
+    app.use((ctx) => {
       ctx.body = ctx.url;
     });
 
