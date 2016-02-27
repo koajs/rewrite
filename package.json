@@ -18,8 +18,8 @@
   ],
   "devDependencies": {
     "koa": "^2.0.0-alpha.3",
-    "mocha": "^2.2.4",
-    "supertest": "^0.15.0"
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
   },
   "license": "MIT",
   "dependencies": {
