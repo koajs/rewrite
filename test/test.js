@@ -76,4 +76,17 @@ describe('new Koa-rewrite', function () {
     .get('/one/test')
     .expect('/two?arg=test', done);
   });
+
+  it('rewrite /one/:arg1/two:arg2 -> /one/two?arg1=:arg1&arg2=:arg2', function (done) {
+    const app = new Koa();
+    app.use(differentPathHelper);
+    app.use(rewrite('/one/:arg1/two/:arg2', '/one/two?arg1=:arg1&arg2=:arg2'));
+    app.use(function(ctx) {
+      ctx.body = ctx.url;
+    });
+
+    request(app.callback())
+    .get('/one/test1/two/test2')
+    .expect('/one/two?arg1=test1&arg2=test2', done);
+  });
 });
