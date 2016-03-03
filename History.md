@@ -1,4 +1,10 @@
 
+2.1.0 / 2016-03-03
+==================
+
+* support rewriting to querystring
+* bump devDeps
+
 2.0.0 / 2015-11-19
 ==================
 
