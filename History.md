@@ -1,4 +1,10 @@
 
+1.1.2 / 2017-08-21
+==================
+
+**others**
+  * [[`0165103`](http://github.com/koajs/rewrite/commit/01651037d17ba0e9c171d802d53b9f21ff8f7291)] - chore: set publish tag to v1 (dead-horse <<dead_horse@qq.com>>)
+
 1.1.1 / 2017-08-21
 ==================
 
