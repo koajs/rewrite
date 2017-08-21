@@ -16,6 +16,9 @@
   "files": [
     "index.js"
   ],
+  "publishConfig": {
+    "tag": "v1"
+  },
   "devDependencies": {
     "koa": "1",
     "mocha": "2",
