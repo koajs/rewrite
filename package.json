@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "debug": "*",
-    "path-to-regexp": "0.0.2"
+    "path-to-regexp": "^2.1.0"
   },
   "engines": {
     "node": ">= 4"

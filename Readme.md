@@ -32,7 +32,7 @@ app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
   for example `/js/vendor/jquery.js` would become `/public/assets/js/vendor/jquery.js`:
 
 ```js
-app.use(rewrite('/js/*', '/public/assets/js/$1'));
+app.use(rewrite('/js/(.*)', '/public/assets/js/$1'));
 ```
 
 ## Debugging

@@ -51,10 +51,10 @@ describe('new Koa-rewrite', () => {
     .expect('/commits/foo/to/bar', done);
   });
 
-  it('rewrite /js/* -> /public/assets/js/$1', done => {
+  it('rewrite /js/(.*) -> /public/assets/js/$1', done => {
     const app = new Koa();
     app.use(differentPathHelper);
-    app.use(rewrite('/js/*', '/public/assets/js/$1'));
+    app.use(rewrite('/js/(.*)', '/public/assets/js/$1'));
     app.use((ctx) => {
       ctx.body = ctx.path;
     });
