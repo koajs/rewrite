@@ -3,7 +3,7 @@
 
  URL rewrite middleware for koa.
 
-___Notice: `koa-rewrite@2` supports `koa@2`, if you want to use this module with `koa@1`, please use `koa-rewrite@1`.___
+___Notice: `koa-rewrite@2+` supports `koa@2`, if you want to use this module with `koa@1`, please use `koa-rewrite@1`.___
 
 ## Installation
 
