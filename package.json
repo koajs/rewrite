@@ -2,7 +2,7 @@
   "name": "koa-rewrite",
   "description": "URL rewrite middleware for koa",
   "repository": "koajs/rewrite",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "scripts": {
     "test": "mocha test/test"
   },
