@@ -13,7 +13,7 @@ app.use(rewrite(/^\/i(\w+)/, '/items/$1'));
 app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
 
 // GET /js/jquery.js
-app.use(rewrite('/js/*', '/public/assets/js/$1'));
+app.use(rewrite('/js/(.*)', '/public/assets/js/$1'));
 
 app.use(function(ctx) {
   ctx.body = ctx.url + '\n';
