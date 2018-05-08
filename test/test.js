@@ -89,4 +89,31 @@ describe('new Koa-rewrite', () => {
     .get('/one/test1/two/test2')
     .expect('/one/two?arg1=test1&arg2=test2', done);
   });
+
+  it('rewrite /?foo=bar -> /home?foo=bar', done => {
+    const app = new Koa();
+    app.use(differentPathHelper);
+    app.use(rewrite(/^\/((\?)(.*?))?$/, '/home$2$3'));
+    app.use((ctx) => {
+      ctx.body = ctx.url;
+    });
+
+    request(app.callback())
+    .get('/?foo=bar')
+    .expect('/home?foo=bar', done);
+  });
+
+  it('rewrite / -> /home', done => {
+    const app = new Koa();
+    app.use(differentPathHelper);
+    app.use(rewrite(/^\/((\?)(.*?))?$/, '/home$2$3'));
+    app.use((ctx) => {
+      ctx.body = ctx.url;
+    });
+
+    request(app.callback())
+    .get('/')
+    .expect('/home', done);
+  });
+
 });
