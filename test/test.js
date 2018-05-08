@@ -4,11 +4,10 @@ const request = require('supertest');
 const Koa = require('koa');
 const rewrite = require('..');
 
-function differentPathHelper(ctx, next) {
+async function differentPathHelper(ctx, next) {
   const orig = ctx.path;
-  return next().then(() => {
-    if (orig !== ctx.path) ctx.throw(ctx.path + ' not equal to original path ' + orig);
-  });
+  await next();
+  if (orig !== ctx.path) ctx.throw(ctx.path + ' not equal to original path ' + orig);
 }
 
 describe('new Koa-rewrite', () => {
