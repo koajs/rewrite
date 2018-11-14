@@ -2,7 +2,7 @@
   "name": "koa-rewrite",
   "description": "URL rewrite middleware for koa",
   "repository": "koajs/rewrite",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "scripts": {
     "test": "mocha test/test"
   },
@@ -24,7 +24,9 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^3.1.0",
-    "path-to-regexp": "^2.1.0"
+    "path-to-regexp": "^2.1.0",
+    "query-string": "^6.2.0",
+    "url-parse": "1.4.4"
   },
   "engines": {
     "node": ">= 4"

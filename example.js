@@ -15,6 +15,9 @@ app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
 // GET /js/jquery.js
 app.use(rewrite('/js/(.*)', '/public/assets/js/$1'));
 
+//Get /home?foo=bar
+app.use(rewrite('/home/:foo', '/new-home?foo=$1'));
+
 app.use(function(ctx) {
   ctx.body = ctx.url + '\n';
 });

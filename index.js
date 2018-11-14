@@ -5,6 +5,8 @@
 
  const debug = require('debug')('koa-rewrite');
  const toRegexp = require('path-to-regexp');
+ const parse = require('url-parse');
+ const queryString = require('query-string');
 
 /**
  * Expose `expose`.
@@ -30,7 +32,8 @@ function rewrite(src, dst) {
 
   return function(ctx, next) {
     const orig = ctx.url;
-    const m = re.exec(orig);
+    const pathUrl = handleQueryString(orig);
+    const m = re.exec(pathUrl);
 
     if (m) {
       ctx.url = dst.replace(/\$(\d+)|(?::(\w+))/g, (_, n, name) => {
@@ -66,4 +69,22 @@ function toMap(params) {
   });
 
   return map;
+}
+
+/**
+ * convert query string url to path string.
+ *
+ * @param {String} src
+ * @return {String}
+ * @api private
+ */
+
+function handleQueryString(src) {
+  let url = parse(src, false);
+  if(url.query){
+    let queryparams = queryString.parse(url.query);
+    return `${url.pathname}/${Object.values(queryparams).join('/')}`;
+  }else{
+    return src;
+  }
 }

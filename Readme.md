@@ -35,6 +35,10 @@ app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'));
 app.use(rewrite('/js/(.*)', '/public/assets/js/$1'));
 ```
 
+```js
+app.use(rewrite('/home?foo=bar', '/new-home?foo=$1'));
+```
+
 ## Debugging
 
   Use the __DEBUG__ environment variable with "koa-rewrite":
