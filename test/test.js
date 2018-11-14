@@ -92,7 +92,7 @@ describe('new Koa-rewrite', () => {
   it('rewrite /?foo=bar -> /home?foo=bar', done => {
     const app = new Koa();
     app.use(differentPathHelper);
-    app.use(rewrite(/^\/((\?)(.*?))?$/, '/home$2$3'));
+    app.use(rewrite('/(.*)/:foo', '/home?foo=$2'));
     app.use((ctx) => {
       ctx.body = ctx.url;
     });
@@ -113,6 +113,32 @@ describe('new Koa-rewrite', () => {
     request(app.callback())
     .get('/')
     .expect('/home', done);
+  });
+
+  it('rewrite /home?foo=bar -> /new-home?foo=:foo', done => {
+    const app = new Koa();
+    app.use(differentPathHelper);
+    app.use(rewrite('/home/:foo', '/new-home?foo=$1'));
+    app.use((ctx) => {
+      ctx.body = ctx.url;
+    });
+
+    request(app.callback())
+    .get('/home?foo=bar')
+    .expect('/new-home?foo=bar', done);
+  });
+
+  it('rewrite /home?foo=bar&test=bar2 -> /new-home?foo=:foo&test=:test', done => {
+    const app = new Koa();
+    app.use(differentPathHelper);
+    app.use(rewrite('/home/:foo/:test', '/new-home?foo=$1&test=$2'));
+    app.use((ctx) => {
+      ctx.body = ctx.url;
+    });
+
+    request(app.callback())
+    .get('/home?foo=bar&test=bar2')
+    .expect('/new-home?foo=bar&test=bar2', done);
   });
 
 });

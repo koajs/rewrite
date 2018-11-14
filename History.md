@@ -1,3 +1,7 @@
+3.0.2 /2018-11-14
+=================
+
+* map query string parameters from original url to rewrite url
 
 3.0.1 / 2018-05-08
 ==================
