@@ -4,7 +4,7 @@
  */
 
 const debug = require('debug')('koa-rewrite')
-const toRegexp = require('path-to-regexp')
+const { pathToRegexp } = require('path-to-regexp')
 
 /**
  * Rwrite `src` to `dst`.
@@ -17,7 +17,7 @@ const toRegexp = require('path-to-regexp')
 
 module.exports = function rewrite (src, dst) {
   const keys = []
-  const re = toRegexp(src, keys)
+  const re = pathToRegexp(src, keys)
   const map = toMap(keys)
 
   debug('rewrite %s -> %s    %s', src, dst, re)
