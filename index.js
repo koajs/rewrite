@@ -7,12 +7,6 @@ const debug = require('debug')('koa-rewrite')
 const toRegexp = require('path-to-regexp')
 
 /**
- * Expose `expose`.
- */
-
-module.exports = rewrite
-
-/**
  * Rwrite `src` to `dst`.
  *
  * @param {String|RegExp} src
@@ -21,7 +15,7 @@ module.exports = rewrite
  * @api public
  */
 
-function rewrite (src, dst) {
+module.exports = function rewrite (src, dst) {
   const keys = []
   const re = toRegexp(src, keys)
   const map = toMap(keys)

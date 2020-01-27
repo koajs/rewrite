@@ -7,7 +7,7 @@ const rewrite = require('..')
 async function differentPathHelper (ctx, next) {
   const orig = ctx.path
   await next()
-  if (orig !== ctx.path) ctx.throw(ctx.path + ' not equal to original path ' + orig)
+  if (orig !== ctx.path) ctx.throw(`${ctx.path} not equal to original path ${orig}`)
 }
 
 describe('new Koa-rewrite', () => {

@@ -16,7 +16,7 @@ app.use(rewrite('/:src..:dst', '/commits/:src/to/:dst'))
 app.use(rewrite('/js/(.*)', '/public/assets/js/$1'))
 
 app.use(function (ctx) {
-  ctx.body = ctx.url + '\n'
+  ctx.body = `${ctx.url}\n`
 })
 
 app.listen(3000, () => {
