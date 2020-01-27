@@ -1,11 +1,12 @@
 {
-  "name": "koa-rewrite",
-  "description": "URL rewrite middleware for koa",
-  "repository": "koajs/rewrite",
+  "name": "koa-rewrite",  
   "version": "3.0.1",
+  "description": "URL rewrite middleware for koa",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint --fix .",
-    "test": "mocha test/test",
+    "test-only": "mocha --reporter spec test/test.js --exit",
+    "test": "npm run lint & npm run test-only",
     "test-cov": "nyc npm run test"
   },
   "keywords": [
@@ -15,6 +16,11 @@
     "redirect",
     "url"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/koajs/rewrite.git"
+  },
+  "license": "MIT",
   "nyc": {
     "reporter": [
       "lcov",
@@ -22,9 +28,10 @@
     ],
     "report-dir": "./coverage"
   },
-  "files": [
-    "index.js"
-  ],
+  "dependencies": {
+    "debug": "^4.1.1",
+    "path-to-regexp": "^6.1.0"
+  },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
@@ -37,12 +44,11 @@
     "nyc": "^15.0.0",
     "supertest": "^4.0.2"
   },
-  "license": "MIT",
-  "dependencies": {
-    "debug": "^4.1.1",
-    "path-to-regexp": "^6.1.0"
-  },
   "engines": {
-    "node": ">= 4"
-  }
+    "node": ">= 8"
+  },
+  "bugs": {
+    "url": "https://github.com/koajs/rewrite/issues"
+  },
+  "homepage": "https://github.com/koajs/rewrite"
 }
