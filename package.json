@@ -1,5 +1,5 @@
 {
-  "name": "koa-rewrite",  
+  "name": "koa-rewrite",
   "version": "3.0.1",
   "description": "URL rewrite middleware for koa",
   "main": "index.js",
@@ -29,7 +29,7 @@
     "report-dir": "./coverage"
   },
   "dependencies": {
-    "debug": "^4.1.1",
+    "debug": "~4.4.0",
     "path-to-regexp": "^6.1.0"
   },
   "devDependencies": {
